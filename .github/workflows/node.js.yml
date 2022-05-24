@@ -5,25 +5,34 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/checkout@v1
+
+      # optimize our build speed by caching our NPM node_modules.
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run test:prod
-      - run: npm run lint
+
+      - name: npm install and npm run build
+        run: |
+          npm ci
+          npm run build:ci
