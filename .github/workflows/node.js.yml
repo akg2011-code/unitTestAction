@@ -43,4 +43,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         uses: Ilshidur/action-slack@1.6.2
         with:
-          args: " الحمدلله :purple_heart: action success :partying_face: View workflow run - https://github.com/akg2011-code/unitTestAction/actions/runs/${{ github.run_id }} - Merged by `${{ github.actor }}` - `${{ github.ref_name }}` "
+          args: " الحمدلله :purple_heart: action success :partying_face: - Merged by `${{ github.actor }}` to `${{ github.ref_name }}` - View workflow run - https://github.com/akg2011-code/unitTestAction/actions/runs/${{ github.run_id }} "
