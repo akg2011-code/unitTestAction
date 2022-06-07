@@ -40,7 +40,7 @@ jobs:
       - name: GitHub Action for Slack
         if: success()
         env:
-        SLACK_WEBHOOK: ${{ https://hooks.slack.com/services/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 }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         uses: Ilshidur/action-slack@1.6.2
         with:
         args: "A new version of your Node.js app has been built"
