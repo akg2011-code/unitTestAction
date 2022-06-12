@@ -43,4 +43,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         uses: Ilshidur/action-slack@1.6.2
         with:
-          args: "Action success  :purple_heart:  :partying_face: .\nMerged by `${{ github.actor }}` to `${{ github.ref_name }}` .\nView workflow run - https://github.com/akg2011-code/unitTestAction/actions/runs/${{ github.run_id }} \ngithub.head_ref ${{ github.head_ref }} \ngithub.ref	${{ github.ref }}  \ngithub.base_ref	${{github.base_ref	}} \nTitle of your PR is ${{ github.event.pull_request.title }} \n title PR ${{ github.event.pull_request.base.ref }}"
+          args: "Action success  :purple_heart:  :partying_face: .\nMerged by `${{ github.actor }}` to `${{ github.ref_name }}` .\nView workflow run - https://github.com/akg2011-code/unitTestAction/actions/runs/${{ github.run_id }} \ngithub.head_ref ${{ github.head_ref }} \ngithub.ref	${{ github.ref }}  \ngithub.base_ref	${{github.base_ref	}} \nTitle of your PR is ${{ github.event}} \n title PR ${{ github.payload }}"
